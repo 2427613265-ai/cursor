@@ -9,5 +9,6 @@
 - `patent-technical-field-sentence-pattern`（说明书技术领域部分撰写）：说明书"技术领域"部分的固定句式，以及专利名称与权利要求书标题一致性、用词统一性的检查清单。
 - `patent-background-technology-drafting`（说明书背景技术部分撰写）：背景技术部分的四段式结构（具体使用场景→现有技术及各自不足→归纳2～3个技术问题→固定收尾句），要求技术问题与权利要求实际解决的问题一一对应。
 - `patent-technical-problem-statement-pattern`（说明书技术问题陈述撰写）：发明内容部分"本发明/实用新型的目的在于提供一种（专利名称），以解决现有技术中的XXXX的问题"固定句式，要求XXXX只对应独立权利要求实际解决的技术问题，不堆砌背景技术里的全部问题。
+- `patent-beneficial-effects-statement-pattern`（说明书有益效果撰写）：发明内容部分"有益效果"只写独立权利要求核心技术特征带来的效果，不混入从权效果，且要与技术问题陈述一一对应、形成镜像呼应。
 
 后续新增通用说明书撰写相关 skill 时，请在本目录下按照 `.cursor/skills/专利/专利撰写/通用/说明书撰写/<skill-name>/SKILL.md` 的结构添加。
