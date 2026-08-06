@@ -37,3 +37,16 @@ skill 位于 `.cursor/skills/专利/` 下，克隆本仓库到用户主目录（
 ## 使用方式
 
 将本仓库克隆到 `~`（会生成 `~/.cursor/skills/专利`），Cursor 会自动发现这些 skill。
+
+## 本地 / Cloud Agent 开发环境
+
+本仓库是 Cursor Agent Skills 集合（非传统 Web/API 应用）。Cloud Agent 通过 `.cursor/environment.json` 安装依赖并启动 skill 目录页：
+
+```bash
+# 安装依赖并校验全部 SKILL.md
+python3 -m pip install --user -q 'python-docx>=1.1.0'
+python3 scripts/validate_skills.py
+
+# 生成并打开本地 skill 目录（默认 http://127.0.0.1:8765/）
+python3 scripts/serve_catalog.py
+```
