@@ -1,0 +1,6 @@
+{
+  "name": "patent-skills",
+  "install": "python3 -m pip install --user -q --upgrade pip && python3 -m pip install --user -q 'python-docx>=1.1.0' && python3 scripts/validate_skills.py",
+  "start": "python3 scripts/serve_catalog.py --host 127.0.0.1 --port 8765",
+  "agentCanUpdateSnapshot": true
+}
