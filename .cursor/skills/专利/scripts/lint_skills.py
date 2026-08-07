@@ -29,6 +29,9 @@ def parse_frontmatter(text: str) -> dict:
     m = re.search(r"^description:\s*(.+?)(?=\n(?:[a-zA-Z_]|---)|\Z)", fm, re.S | re.M)
     if m:
         data["description"] = " ".join(m.group(1).split())
+    # optional metadata.中文名称 (warn if missing on non-jump skills)
+    if re.search(r"^\s*中文名称:\s*\S", fm, re.M):
+        data["has_cn_name"] = True
     return data
 
 
