@@ -1,0 +1,10 @@
+docx_extract/
+dwg_out/
+*.dxf
+*_content.png
+*_dense.png
+*_best.png
+*_left.png
+平面图.png
+大样图.png
+__pycache__/
