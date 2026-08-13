@@ -29,6 +29,9 @@ def parse_frontmatter(text: str) -> dict:
     m = re.search(r"^description:\s*(.+?)(?=\n(?:[a-zA-Z_]|---)|\Z)", fm, re.S | re.M)
     if m:
         data["description"] = " ".join(m.group(1).split())
+    # optional metadata.中文名称 (warn if missing on non-jump skills)
+    if re.search(r"^\s*中文名称:\s*\S", fm, re.M):
+        data["has_cn_name"] = True
     return data
 
 
@@ -63,10 +66,13 @@ def main() -> int:
             continue
         if len(desc) > DESC_LIMIT:
             errors.append(f"{rel}: description {len(desc)} > {DESC_LIMIT} ({name})")
-        limit = BODY_WARN_CTRL if is_controller(name, rel) else BODY_WARN_NORM
         # jump stubs are short — ok
-        if "已收束" in desc or "跳转" in name:
+        is_jump = "已收束" in desc or "跳转" in name or "跳转" in desc[:20]
+        if not is_jump and not fm.get("has_cn_name"):
+            warns.append(f"{rel}: missing metadata.中文名称 ({name})")
+        if is_jump:
             continue
+        limit = BODY_WARN_CTRL if is_controller(name, rel) else BODY_WARN_NORM
         if lines > limit:
             msg = f"{rel}: body {lines} lines > soft {limit} ({name})"
             (errors if args.strict_body else warns).append(msg)
