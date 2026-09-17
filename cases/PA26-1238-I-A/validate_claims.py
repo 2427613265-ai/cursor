@@ -62,7 +62,19 @@ def main() -> int:
             notes.append(f"权{n} 可能是多项从权, cited={cs}")
 
     c1 = claims[1]
-    for token in ["L1", "R1", "J1", "对称节段对", "跳仓", "分批次", "绝对值不小于2", "所述跳仓是指"]:
+    for token in [
+        "L1",
+        "R1",
+        "J1",
+        "对称节段对",
+        "隔仓浇筑",
+        "回填浇筑",
+        "被跳过的对称节段对",
+        "循环进行隔仓浇筑",
+        "其余非吊索区湿接缝",
+        "绝对值不小于2",
+        "分批次",
+    ]:
         if token not in c1:
             errors.append(f"权1缺少关键用语: {token}")
 
