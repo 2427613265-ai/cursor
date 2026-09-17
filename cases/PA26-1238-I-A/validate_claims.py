@@ -175,6 +175,10 @@ def main() -> int:
         errors.append("权9预设范围链错误")
 
     notes.append("权1 length chars: %d" % len(c1))
+    c1_compact = "".join(c1.split())
+    notes.append("权1 compact chars: %d" % len(c1_compact))
+    if len(c1_compact) > 500:
+        errors.append(f"权1超过500字: {len(c1_compact)}")
     notes.append("abstract will be checked from full docx")
 
     full = Path("/workspace/cases/PA26-1238-I-A/一种悬索桥钢混组合梁原位叠合浇筑施工方法-权利要求修订稿.docx")
