@@ -168,6 +168,38 @@ def main() -> int:
                     if f"所述{term}" in body and first not in chain:
                         errors.append(f"权{n} 所述{term} 首次在权{first}，链{chain}未覆盖")
 
+    c3 = claims[3]
+    for token in [
+        "隔仓浇筑的每一浇筑批次开始前",
+        "单位浇筑方量",
+        "预先确定的计划浇筑方量",
+        "候选对称节段对",
+        "最近一次已完成浇筑的对称节段对",
+        "本轮开始时尚未浇筑",
+        "所述本批次浇筑对象",
+        "所述被跳过的对称节段对中尚未浇筑",
+        "在所述回填浇筑完成后仍存在尚未浇筑的其余非吊索区湿接缝的情况下",
+    ]:
+        if token not in c3:
+            errors.append(f"权3缺少质检改写用语: {token}")
+    for bad in [
+        "单位浇筑荷载",
+        "该对称节段对",
+        "分多个浇筑批次",
+        "对称浇筑其中尚未浇筑",
+        "S36所述编号差约束",
+        "S37、",
+        "S38、",
+        "S39、",
+        "如果",
+        "当……时",
+        "编号之差",
+    ]:
+        if bad in c3:
+            errors.append(f"权3不应再出现: {bad}")
+    if "S31、隔仓浇筑的每一浇筑批次" not in c3:
+        errors.append("权3子步未在本条内从S31起编")
+
     # specific
     if "所述预设阈值" in claims[7] and 6 not in chains[7]:
         errors.append("权7预设阈值链错误")
